@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0D981749-0303-4C65-A56A-E2E0FE2BBF8C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>JabberCompiler.Model</RootNamespace>
+    <AssemblyName>JabberCompiler.Model</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Expressions\DeclarationExpression.cs" />
+    <Compile Include="Implementation\ArgumentData.cs" />
+    <Compile Include="Implementation\ContextData.cs" />
+    <Compile Include="Expressions\ExpressionData.cs" />
+    <Compile Include="Implementation\ExpressionSet.cs" />
+    <Compile Include="Implementation\FunctionData.cs" />
+    <Compile Include="Implementation\GlobalContext.cs" />
+    <Compile Include="IArgumentData.cs" />
+    <Compile Include="IContext.cs" />
+    <Compile Include="IExpressionData.cs" />
+    <Compile Include="IExpressionSet.cs" />
+    <Compile Include="IFunctionData.cs" />
+    <Compile Include="Statements\DeclarationStatement.cs" />
+    <Compile Include="Statements\IAssignment.cs" />
+    <Compile Include="Statements\IConstant.cs" />
+    <Compile Include="Statements\IDeclaration.cs" />
+    <Compile Include="Statements\IFunctionCall.cs" />
+    <Compile Include="Statements\INewStatement.cs" />
+    <Compile Include="Statements\IOperator.cs" />
+    <Compile Include="Statements\IStatementData.cs" />
+    <Compile Include="IVariable.cs" />
+    <Compile Include="Predefined\BooleanType.cs" />
+    <Compile Include="Predefined\IntegerType.cs" />
+    <Compile Include="Predefined\VoidType.cs" />
+    <Compile Include="Preposition.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ITypeData.cs" />
+    <Compile Include="Statements\IVariableStatement.cs" />
+    <Compile Include="Implementation\TypeData.cs" />
+    <Compile Include="Statements\KindUtilities.cs" />
+    <Compile Include="Statements\StatementKind.cs" />
+    <Compile Include="TypeRegistration.cs" />
+    <Compile Include="Implementation\VariableData.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
