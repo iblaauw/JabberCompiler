@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JabberCompiler.Model.Implementation.Internal
+namespace JabberCompiler.Model.Internal.Implementation
 {
     internal class ContextData : IContextData
     {

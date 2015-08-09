@@ -1,5 +1,4 @@
 ﻿using JabberCompiler.Model;
-using JabberCompiler.Model.Implementation;
 using JabberCompiler.Model.Mutable;
 using System;
 using System.Collections.Generic;

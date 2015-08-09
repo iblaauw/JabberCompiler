@@ -32,7 +32,7 @@ namespace JabberCompiler.Model.Internal.Implementation
             get { return functions; }
         }
 
-        public FunctionData CreateFunction(string name, IReadOnlyType returnType)
+        public IFunctionData CreateFunction(string name, IReadOnlyType returnType)
         {
             if (funcNames.Contains(name))
                 throw new InvalidOperationException("A function with the given name already exists.");

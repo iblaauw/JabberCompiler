@@ -13,10 +13,10 @@ namespace JabberCompiler.Model.Internal.Implementation
     {
         private List<IReadOnlyExpression> expressions;
 
-        internal ExpressionSet(IReadOnlyContext associatedContext)
+        internal ExpressionSet(IContextData associatedContext)
         {
             this.expressions = new List<IReadOnlyExpression>();
-            AssociateContext = associatedContext;
+            AssociatedContextMutable = associatedContext;
         }
 
         public IReadOnlyList<IReadOnlyExpression> Expressions
@@ -24,13 +24,18 @@ namespace JabberCompiler.Model.Internal.Implementation
             get { return expressions; }
         }
 
-        public IReadOnlyContext AssociateContext { get; private set; }
+        IReadOnlyContext IReadOnlyExpressionSet.AssociateContext 
+        { 
+            get { return AssociatedContextMutable; }
+        }
+
+        public IContextData AssociatedContextMutable { get; private set; }
 
         public IReadOnlyExpression AddExpression(IStatementData statementHead)
         {
             ValidateStatementToAdd(statementHead);
 
-            ExpressionData data = new ExpressionData(AssociateContext, statementHead);
+            ExpressionData data = new ExpressionData(AssociatedContextMutable, statementHead);
             expressions.Add(data);
 
             return data;

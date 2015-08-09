@@ -10,11 +10,10 @@ namespace JabberCompiler.Model.Predefined
     {
         public string Name { get { return "bool"; } }
 
-
         public bool IsSingleton { get { return false; } }
 
-
         public IReadOnlyList<IReadOnlyFunction> MemberFunctions { get { return null; } }
-        
+
+        public IReadOnlyContext ClassContext { get { return GlobalContext.Instance; } }
     }
 }

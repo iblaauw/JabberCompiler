@@ -5,7 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using JabberCompiler.Model.Statements;
-using JabberCompiler.Model.Implementation;
+using JabberCompiler.Model.Internal.Implementation;
+using JabberCompiler.Model.Mutable;
 
 //TODO NEXT: Take the current model configuration (which is a mess) and split it into 
 //      a bunch of IReadOnlyXXX and IXXX. So an IReadOnlyContext, an IContext, and an internal Context for backing.
@@ -14,7 +15,7 @@ namespace JabberCompiler.Model.Expressions
 {
     public class ExpressionData : IReadOnlyExpression
     {
-        internal ExpressionData(ContextData owningContext, IStatementData statementHead)
+        internal ExpressionData(IReadOnlyContext owningContext, IStatementData statementHead)
         {
             //These should have been checked before calling this
             Debug.Assert(!KindUtilities.IsNeverRoot(statementHead.Kind));
@@ -39,7 +40,7 @@ namespace JabberCompiler.Model.Expressions
             get { return SubSet; }
         }
 
-        public ExpressionSet SubSet { get; private set; }
+        public IExpressionSet SubSet { get; private set; }
 
         private void DoStatementSpecific(IStatementData data, ContextData context)
         {
