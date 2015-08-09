@@ -8,7 +8,7 @@ namespace JabberCompiler.Model.Statements
 {
     public interface IFunctionCall : IStatementData
     {
-        IFunctionData Function { get; }
+        IReadOnlyFunction Function { get; }
         IReadOnlyList<IStatementData> ArgumentStatements { get; }
     }
 }

@@ -8,7 +8,7 @@ namespace JabberCompiler.Model.Statements
 {
     public interface IAssignment : IStatementData
     {
-        IVariable AssignedTo { get; }
+        IReadOnlyVariable AssignedTo { get; }
         IStatementData AssignedValue { get; }
     }
 }

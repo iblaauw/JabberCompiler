@@ -8,22 +8,22 @@ using System.Threading.Tasks;
 
 namespace JabberCompiler.Model.Implementation
 {
-    public class ExpressionSet : IExpressionSet
+    public class ExpressionSet : IReadOnlyExpressionSet
     {
-        private List<IExpressionData> expressions;
+        private List<IReadOnlyExpression> expressions;
 
-        internal ExpressionSet(IContext associatedContext)
+        internal ExpressionSet(IReadOnlyContext associatedContext)
         {
-            this.expressions = new List<IExpressionData>();
+            this.expressions = new List<IReadOnlyExpression>();
             AssociateContext = associatedContext;
         }
 
-        public IReadOnlyList<IExpressionData> Expressions
+        public IReadOnlyList<IReadOnlyExpression> Expressions
         {
             get { return expressions; }
         }
 
-        public IContext AssociateContext { get; private set; }
+        public IReadOnlyContext AssociateContext { get; private set; }
 
         public ExpressionData AddExpression(IStatementData statementHead)
         {

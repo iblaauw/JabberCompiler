@@ -7,9 +7,12 @@ using System.Threading.Tasks;
 using JabberCompiler.Model.Statements;
 using JabberCompiler.Model.Implementation;
 
+//TODO NEXT: Take the current model configuration (which is a mess) and split it into 
+//      a bunch of IReadOnlyXXX and IXXX. So an IReadOnlyContext, an IContext, and an internal Context for backing.
+
 namespace JabberCompiler.Model.Expressions
 {
-    public class ExpressionData : IExpressionData
+    public class ExpressionData : IReadOnlyExpression
     {
         internal ExpressionData(ContextData owningContext, IStatementData statementHead)
         {
@@ -29,9 +32,9 @@ namespace JabberCompiler.Model.Expressions
 
         public Statements.IStatementData ComponentsHead { get; private set; }
 
-        public IContext OwningContext { get; private set; }
+        public IReadOnlyContext OwningContext { get; private set; }
 
-        public IExpressionSet SubExpressions
+        public IReadOnlyExpressionSet SubExpressions
         {
             get { return SubSet; }
         }

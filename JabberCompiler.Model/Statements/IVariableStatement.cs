@@ -8,6 +8,6 @@ namespace JabberCompiler.Model.Statements
 {
     public interface IVariableStatement : IStatementData
     {
-        IVariable Variable { get; }
+        IReadOnlyVariable Variable { get; }
     }
 }

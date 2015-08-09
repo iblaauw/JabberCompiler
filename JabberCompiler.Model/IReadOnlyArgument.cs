@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JabberCompiler.Model.Statements
+namespace JabberCompiler.Model
 {
-    public interface IDeclaration : IStatementData
+    public interface IReadOnlyArgument
     {
         string Name { get; }
+        IReadOnlyFunction Owner { get; }
         IReadOnlyType Type { get; }
-        bool IsAssigned { get; }
-        IStatementData AssignmentValue { get; }
+        Preposition AlternateAccess { get; }
     }
 }

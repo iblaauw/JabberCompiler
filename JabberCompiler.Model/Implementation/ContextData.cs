@@ -6,23 +6,23 @@ using System.Threading.Tasks;
 
 namespace JabberCompiler.Model
 {
-    public class ContextData : IContext
+    public class ContextData : IReadOnlyContext
     {
-        private Dictionary<string, IVariable> variablesByName;
-        private IContext parentContext;
+        private Dictionary<string, IReadOnlyVariable> variablesByName;
+        private IReadOnlyContext parentContext;
 
-        internal ContextData(IContext parentContext)
+        internal ContextData(IReadOnlyContext parentContext)
         {
-            variablesByName = new Dictionary<string, IVariable>();
+            variablesByName = new Dictionary<string, IReadOnlyVariable>();
         }
 
 
-        public IReadOnlyCollection<IVariable> Variables
+        public IReadOnlyCollection<IReadOnlyVariable> Variables
         {
             get { throw new NotImplementedException(); }
         }
 
-        public IVariable GetByName(string name)
+        public IReadOnlyVariable GetByName(string name)
         {
             throw new NotImplementedException();
         }
@@ -38,7 +38,7 @@ namespace JabberCompiler.Model
             return false;
         }
 
-        public void AddVariable(string name, ITypeData type)
+        public void AddVariable(string name, IReadOnlyType type)
         {
             if (ContainsVariable(name))
                 throw new InvalidOperationException("The variable already exists in this context.");

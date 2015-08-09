@@ -8,42 +8,42 @@ using System.Threading.Tasks;
 
 namespace JabberCompiler
 {
-    public class FunctionData : IFunctionData
+    public class FunctionData : IReadOnlyFunction
     {
-        private List<IArgumentData> arguments;
-        private Dictionary<Preposition, IArgumentData> prepArgMap;
+        private List<IReadOnlyArgument> arguments;
+        private Dictionary<Preposition, IReadOnlyArgument> prepArgMap;
         private HashSet<string> argumentNames;
 
-        internal FunctionData(string name, ITypeData owner, ITypeData returnType)
+        internal FunctionData(string name, IReadOnlyType owner, IReadOnlyType returnType)
         {
             this.Name = name;
             this.Owner = owner;
             this.ReturnType = returnType;
 
             functionContext = new ContextData(owner.ClassContext);
-            arguments = new List<IArgumentData>();
-            prepArgMap = new Dictionary<Preposition, IArgumentData>();
+            arguments = new List<IReadOnlyArgument>();
+            prepArgMap = new Dictionary<Preposition, IReadOnlyArgument>();
             argumentNames = new HashSet<string>();
             expressions = new ExpressionSet(functionContext);
         }
 
         public string Name { get; private set; }
 
-        public ITypeData Owner { get; private set; }
+        public IReadOnlyType Owner { get; private set; }
 
-        public ITypeData ReturnType { get; private set; }
+        public IReadOnlyType ReturnType { get; private set; }
 
-        public IReadOnlyList<IArgumentData> AllArguments
+        public IReadOnlyList<IReadOnlyArgument> AllArguments
         {
             get { return arguments; }
         }
 
-        public IReadOnlyDictionary<Preposition, IArgumentData> AlternateArguments
+        public IReadOnlyDictionary<Preposition, IReadOnlyArgument> AlternateArguments
         {
             get { return prepArgMap; }
         }
 
-        public ArgumentData CreateArgument(string name, ITypeData type)
+        public ArgumentData CreateArgument(string name, IReadOnlyType type)
         {
             if (this.argumentNames.Contains(name))
                 throw new InvalidOperationException("An argument with the given name already exists.");
@@ -54,7 +54,7 @@ namespace JabberCompiler
             return arg;
         }
 
-        public ArgumentData CreateAlternateArgument(string name, ITypeData type, Preposition alternateAccess)
+        public ArgumentData CreateAlternateArgument(string name, IReadOnlyType type, Preposition alternateAccess)
         {
             if (this.argumentNames.Contains(name))
                 throw new InvalidOperationException("An argument with the given name already exists.");
@@ -70,13 +70,13 @@ namespace JabberCompiler
         }
 
         private ContextData functionContext;
-        public IContext FunctionContext
+        public IReadOnlyContext FunctionContext
         {
             get { return functionContext; }
         }
 
         private ExpressionSet expressions;
-        public IExpressionSet Expressions
+        public IReadOnlyExpressionSet Expressions
         {
             get { return expressions; }
         }

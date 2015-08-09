@@ -14,7 +14,7 @@ namespace JabberCompiler.Model.Statements
     public interface IStatementData
     {
         StatementKind Kind { get; }
-        IExpressionData ParentExpression { get; internal set; }
+        IReadOnlyExpression ParentExpression { get; internal set; }
         IStatementData ParentStatement { get; internal set; }
         IReadOnlyList<IStatementData> SubStatements { get; }
     }

@@ -8,7 +8,7 @@ namespace JabberCompiler.Model.Statements
 {
     public interface IOperator : IStatementData
     {
-        ITypeData ReturnType { get; }
+        IReadOnlyType ReturnType { get; }
         IStatementData LeftSide { get; }
         IStatementData RightSide { get; }
     }

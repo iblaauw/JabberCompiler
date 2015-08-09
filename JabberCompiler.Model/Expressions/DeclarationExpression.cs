@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JabberCompiler.Model.Expressions
 {
-    public class DeclarationExpression : IExpressionData
+    public class DeclarationExpression : IReadOnlyExpression
     {
         private Statements.IDeclaration statement;
 
@@ -20,9 +20,9 @@ namespace JabberCompiler.Model.Expressions
             get { return statement; }
         }
 
-        public IContext OwningContext { get; internal set; }
+        public IReadOnlyContext OwningContext { get; internal set; }
 
-        public IExpressionSet SubExpressions
+        public IReadOnlyExpressionSet SubExpressions
         {
             get { return null; }
         }

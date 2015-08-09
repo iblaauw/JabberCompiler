@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace JabberCompiler.Model.Predefined
 {
-    internal class VoidType : ITypeData
+    internal class VoidType : IReadOnlyType
     {
         public string Name { get { return "void"; } }
 
         public bool IsSingleton { get { return false; } }
 
-        public IReadOnlyList<IFunctionData> MemberFunctions { get { return null; } }
+        public IReadOnlyList<IReadOnlyFunction> MemberFunctions { get { return null; } }
     }
 }

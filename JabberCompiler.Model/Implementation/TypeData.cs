@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace JabberCompiler
 {
-    public class TypeData : ITypeData
+    public class TypeData : IReadOnlyType
     {
-        private List<IFunctionData> functions;
+        private List<IReadOnlyFunction> functions;
         private HashSet<string> funcNames;
 
         public TypeData(string name, bool isSingleton = false)
@@ -20,7 +20,7 @@ namespace JabberCompiler
             //The context for a class is always inside of global context
             this.context = new ContextData(GlobalContext.GetInstance());
 
-            functions = new List<IFunctionData>();
+            functions = new List<IReadOnlyFunction>();
             funcNames = new HashSet<string>();
 
             TypeRegistration.RegisterType(name, this);
@@ -30,12 +30,12 @@ namespace JabberCompiler
 
         public bool IsSingleton { get; private set; }
 
-        public IReadOnlyList<IFunctionData> MemberFunctions
+        public IReadOnlyList<IReadOnlyFunction> MemberFunctions
         {
             get { return functions; }
         }
 
-        public FunctionData CreateFunction(string name, ITypeData returnType)
+        public FunctionData CreateFunction(string name, IReadOnlyType returnType)
         {
             if (funcNames.Contains(name))
                 throw new InvalidOperationException("A function with the given name already exists.");
@@ -47,6 +47,6 @@ namespace JabberCompiler
         }
 
         private ContextData context;
-        public IContext ClassContext { get { return context; } }
+        public IReadOnlyContext ClassContext { get { return context; } }
     }
 }

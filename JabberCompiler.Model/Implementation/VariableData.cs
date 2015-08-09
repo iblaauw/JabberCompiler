@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace JabberCompiler.Model
 {
-    internal class VariableData : IVariable
+    internal class VariableData : IReadOnlyVariable
     {
-        internal VariableData(string name, ITypeData type, IContext owner)
+        internal VariableData(string name, IReadOnlyType type, IReadOnlyContext owner)
         {
             this.Name = name;
             this.Type = type;
@@ -17,8 +17,8 @@ namespace JabberCompiler.Model
 
         public string Name { get; private set; }
 
-        public IContext OwningContext { get; private set; }
+        public IReadOnlyContext OwningContext { get; private set; }
 
-        public ITypeData Type { get; private set; }
+        public IReadOnlyType Type { get; private set; }
     }
 }

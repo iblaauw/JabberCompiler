@@ -10,7 +10,7 @@ namespace JabberCompiler.Model.Statements
     {
         public string Name { get; private set; }
 
-        public ITypeData Type { get; private set; }
+        public IReadOnlyType Type { get; private set; }
 
         public bool IsAssigned { get; private set; }
 
@@ -18,7 +18,7 @@ namespace JabberCompiler.Model.Statements
 
         public StatementKind Kind { get; private set; }
 
-        public IExpressionData ParentExpression { get; private set; }
+        public IReadOnlyExpression ParentExpression { get; private set; }
 
         public IStatementData ParentStatement { get; private set; }
 

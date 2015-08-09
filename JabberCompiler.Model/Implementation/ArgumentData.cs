@@ -7,13 +7,13 @@ using JabberCompiler.Model;
 
 namespace JabberCompiler
 {
-    public class ArgumentData : IArgumentData
+    public class ArgumentData : IReadOnlyArgument
     {
-        internal ArgumentData(string name, ITypeData type, IFunctionData owner) 
+        internal ArgumentData(string name, IReadOnlyType type, IReadOnlyFunction owner) 
             : this(name, type, owner, Preposition.NONE)
         { }
 
-        internal ArgumentData(string name, ITypeData type, IFunctionData owner, Preposition prep)
+        internal ArgumentData(string name, IReadOnlyType type, IReadOnlyFunction owner, Preposition prep)
         {
             this.Name = name;
             this.Type = type;
@@ -23,9 +23,9 @@ namespace JabberCompiler
 
         public string Name { get; private set; }
 
-        public IFunctionData Owner { get; private set; }
+        public IReadOnlyFunction Owner { get; private set; }
 
-        public ITypeData Type { get; private set; }
+        public IReadOnlyType Type { get; private set; }
 
         public Preposition AlternateAccess { get; private set; }
     }

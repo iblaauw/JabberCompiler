@@ -8,6 +8,6 @@ namespace JabberCompiler.Model.Statements
 {
     public interface INewStatement : IStatementData
     {
-        IFunctionData Constructor { get; }
+        IReadOnlyFunction Constructor { get; }
     }
 }

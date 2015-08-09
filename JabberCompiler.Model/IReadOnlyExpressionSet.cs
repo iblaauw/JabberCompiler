@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace JabberCompiler.Model
 {
-    public enum Preposition
+    public interface IReadOnlyExpressionSet
     {
-        NONE, To, From, Into, At,
+        IReadOnlyList<IReadOnlyExpression> Expressions { get; }
+        IReadOnlyContext AssociateContext { get; }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JabberCompiler.Model.Predefined
 {
-    internal class IntegerType : ITypeData
+    internal class IntegerType : IReadOnlyType
     {
         public string Name { get { return "int"; } }
 
@@ -14,7 +14,7 @@ namespace JabberCompiler.Model.Predefined
         public bool IsSingleton { get { return false; } }
 
 
-        public IReadOnlyList<IFunctionData> MemberFunctions { get { return null; } }
+        public IReadOnlyList<IReadOnlyFunction> MemberFunctions { get { return null; } }
         
     }
 }

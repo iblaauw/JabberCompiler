@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JabberCompiler.Model
 {
-    public class GlobalContext : IContext
+    public class GlobalContext : IReadOnlyContext
     {
         private static readonly GlobalContext instance = new GlobalContext();
 
@@ -22,12 +22,12 @@ namespace JabberCompiler.Model
             return instance;
         }
 
-        public IReadOnlyCollection<IVariable> Variables
+        public IReadOnlyCollection<IReadOnlyVariable> Variables
         {
             get { return variables.Values.ToList(); }
         }
 
-        public IVariable GetByName(string name)
+        public IReadOnlyVariable GetByName(string name)
         {
             return variables[name];
         }
@@ -37,7 +37,7 @@ namespace JabberCompiler.Model
             return variables.ContainsKey(name);
         }
 
-        public void AddVariable(string name, ITypeData type)
+        public void AddVariable(string name, IReadOnlyType type)
         {
             if (ContainsVariable(name))
                 throw new InvalidOperationException("The variable already exists.");
