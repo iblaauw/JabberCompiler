@@ -1,12 +1,13 @@
-﻿using System;
+﻿using JabberCompiler.Model.Mutable;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JabberCompiler.Model
+namespace JabberCompiler.Model.Implementation.Internal
 {
-    public class ContextData : IReadOnlyContext
+    internal class ContextData : IContextData
     {
         private Dictionary<string, IReadOnlyVariable> variablesByName;
         private IReadOnlyContext parentContext;
@@ -38,13 +39,14 @@ namespace JabberCompiler.Model
             return false;
         }
 
-        public void AddVariable(string name, IReadOnlyType type)
+        public IReadOnlyVariable AddVariable(string name, IReadOnlyType type)
         {
             if (ContainsVariable(name))
                 throw new InvalidOperationException("The variable already exists in this context.");
 
             VariableData data = new VariableData(name, type, this);
             variablesByName[name] = data;
+            return data;
         }
 
         private bool SelfContains(string name)

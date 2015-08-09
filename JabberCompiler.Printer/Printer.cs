@@ -20,7 +20,7 @@ namespace JabberCompiler.Printer
             outputDirPath = Path.Combine(myDocs, OUTPUT_DIRECTORY);
         }
 
-        public static Task PrintType(JabberCompiler.Model.ITypeData typeData)
+        public static Task PrintType(JabberCompiler.Model.IReadOnlyType typeData)
         {
             FullFile fullFile = Composer.CreateFileForType(typeData);
 

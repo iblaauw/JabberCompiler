@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JabberCompiler.Model.Mutable;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace JabberCompiler.Model
 {
-    public class GlobalContext : IReadOnlyContext
+    public class GlobalContext : IContextData
     {
         private static readonly GlobalContext instance = new GlobalContext();
 
@@ -17,9 +18,9 @@ namespace JabberCompiler.Model
             variables = new Dictionary<string, VariableData>();
         }
 
-        public static GlobalContext GetInstance()
+        public static GlobalContext Instance
         {
-            return instance;
+            get { return instance; }
         }
 
         public IReadOnlyCollection<IReadOnlyVariable> Variables
@@ -37,12 +38,15 @@ namespace JabberCompiler.Model
             return variables.ContainsKey(name);
         }
 
-        public void AddVariable(string name, IReadOnlyType type)
+        public IReadOnlyVariable AddVariable(string name, IReadOnlyType type)
         {
             if (ContainsVariable(name))
                 throw new InvalidOperationException("The variable already exists.");
 
-            variables[name] = new VariableData(name, type, this);
+            var newVar = new VariableData(name, type, this);
+            variables[name] = newVar;
+
+            return newVar;
         }
     }
 }

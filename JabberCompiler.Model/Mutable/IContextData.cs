@@ -9,5 +9,6 @@ namespace JabberCompiler.Model.Mutable
     public interface IContextData : IReadOnlyContext
     {
         IReadOnlyVariable AddVariable(string name, IReadOnlyType type);
+        ITypeData AddType(string name);
     }
 }

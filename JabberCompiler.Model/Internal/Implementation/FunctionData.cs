@@ -1,14 +1,15 @@
 ﻿using JabberCompiler.Model;
 using JabberCompiler.Model.Implementation;
+using JabberCompiler.Model.Mutable;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JabberCompiler
+namespace JabberCompiler.Model.Internal.Implementation
 {
-    public class FunctionData : IReadOnlyFunction
+    internal class FunctionData : IFunctionData
     {
         private List<IReadOnlyArgument> arguments;
         private Dictionary<Preposition, IReadOnlyArgument> prepArgMap;
@@ -43,7 +44,7 @@ namespace JabberCompiler
             get { return prepArgMap; }
         }
 
-        public ArgumentData CreateArgument(string name, IReadOnlyType type)
+        public IReadOnlyArgument CreateArgument(string name, IReadOnlyType type)
         {
             if (this.argumentNames.Contains(name))
                 throw new InvalidOperationException("An argument with the given name already exists.");
@@ -54,7 +55,7 @@ namespace JabberCompiler
             return arg;
         }
 
-        public ArgumentData CreateAlternateArgument(string name, IReadOnlyType type, Preposition alternateAccess)
+        public IReadOnlyArgument CreateAlternateArgument(string name, IReadOnlyType type, Preposition alternateAccess)
         {
             if (this.argumentNames.Contains(name))
                 throw new InvalidOperationException("An argument with the given name already exists.");

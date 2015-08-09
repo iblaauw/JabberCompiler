@@ -1,4 +1,5 @@
 ﻿using JabberCompiler.Model.Expressions;
+using JabberCompiler.Model.Mutable;
 using JabberCompiler.Model.Statements;
 using System;
 using System.Collections.Generic;
@@ -6,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JabberCompiler.Model.Implementation
+namespace JabberCompiler.Model.Internal.Implementation
 {
-    public class ExpressionSet : IReadOnlyExpressionSet
+    internal class ExpressionSet : IExpressionSet
     {
         private List<IReadOnlyExpression> expressions;
 
@@ -25,7 +26,7 @@ namespace JabberCompiler.Model.Implementation
 
         public IReadOnlyContext AssociateContext { get; private set; }
 
-        public ExpressionData AddExpression(IStatementData statementHead)
+        public IReadOnlyExpression AddExpression(IStatementData statementHead)
         {
             ValidateStatementToAdd(statementHead);
 

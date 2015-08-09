@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using JabberCompiler.Model;
 
-namespace JabberCompiler
+namespace JabberCompiler.Model.Internal.Implementation
 {
-    public class ArgumentData : IReadOnlyArgument
+    internal class ArgumentData : IReadOnlyArgument
     {
         internal ArgumentData(string name, IReadOnlyType type, IReadOnlyFunction owner) 
             : this(name, type, owner, Preposition.NONE)

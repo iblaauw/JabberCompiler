@@ -1,29 +1,26 @@
-﻿using JabberCompiler.Model;
+﻿using JabberCompiler.Model.Mutable;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JabberCompiler
+namespace JabberCompiler.Model.Internal.Implementation
 {
-    public class TypeData : IReadOnlyType
+    internal class TypeData : ITypeData
     {
         private List<IReadOnlyFunction> functions;
         private HashSet<string> funcNames;
 
-        public TypeData(string name, bool isSingleton = false)
+        public TypeData(string name, IReadOnlyContext owningContext, bool isSingleton = false)
         {
             this.Name = name;
             this.IsSingleton = isSingleton;
 
-            //The context for a class is always inside of global context
-            this.context = new ContextData(GlobalContext.GetInstance());
+            this.context = new ContextData(owningContext);
 
             functions = new List<IReadOnlyFunction>();
             funcNames = new HashSet<string>();
-
-            TypeRegistration.RegisterType(name, this);
         }
 
         public string Name { get; private set; }

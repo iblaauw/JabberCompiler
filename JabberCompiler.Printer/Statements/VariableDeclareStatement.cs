@@ -12,7 +12,7 @@ namespace JabberCompiler.Printer.Statements
     {
         private SpacedExpressionNode head;
 
-        public VariableDeclareStatement(ITypeData type, string name)
+        public VariableDeclareStatement(IReadOnlyType type, string name)
         {
             ExpressionLeaf leaf1 = new ExpressionLeaf(type.Name);
             ExpressionLeaf leaf2 = new ExpressionLeaf(type.Name);

@@ -29,7 +29,7 @@ namespace JabberCompiler.Printer
             printTask.Wait();
         }
 
-        internal static FullFile CreateFileForType(JabberCompiler.Model.ITypeData type)
+        internal static FullFile CreateFileForType(JabberCompiler.Model.IReadOnlyType type)
         {
             if (type.IsSingleton)
                 throw new NotImplementedException();
@@ -48,7 +48,7 @@ namespace JabberCompiler.Printer
             return file;
         }
 
-        private static Function ConvertFunction(JabberCompiler.Model.IFunctionData function)
+        private static Function ConvertFunction(JabberCompiler.Model.IReadOnlyFunction function)
         {
             Function value = new Function() {
                 IsPublic = true,
@@ -63,7 +63,7 @@ namespace JabberCompiler.Printer
             return value;
         }
 
-        private static Argument ConvertArgument(JabberCompiler.Model.IArgumentData argument)
+        private static Argument ConvertArgument(JabberCompiler.Model.IReadOnlyArgument argument)
         {
             return new Argument(argument.Name, argument.Type.Name);
         }
