@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JabberCompiler.Model.Internal.Implementation.Statements
+namespace JabberCompiler.Model.Statements.Internal
 {
     internal class GetVariable : IGetVariableStatement
     {

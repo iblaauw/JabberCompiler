@@ -45,10 +45,10 @@
     <Compile Include="Internal\Implementation\ExpressionSet.cs" />
     <Compile Include="Internal\Implementation\FunctionData.cs" />
     <Compile Include="GlobalContext.cs" />
-    <Compile Include="Internal\Implementation\Statements\Assignment.cs" />
-    <Compile Include="Internal\Implementation\Statements\Constant.cs" />
-    <Compile Include="Internal\Implementation\Statements\Declaration.cs" />
-    <Compile Include="Internal\Implementation\Statements\GetVariable.cs" />
+    <Compile Include="Statements\Internal\Assignment.cs" />
+    <Compile Include="Statements\Internal\Constant.cs" />
+    <Compile Include="Statements\Internal\Declaration.cs" />
+    <Compile Include="Statements\Internal\GetVariable.cs" />
     <Compile Include="IReadOnlyArgument.cs" />
     <Compile Include="IReadOnlyContext.cs" />
     <Compile Include="IReadOnlyExpression.cs" />
@@ -60,7 +60,7 @@
     <Compile Include="Mutable\IExpressionSet.cs" />
     <Compile Include="Mutable\IFunctionData.cs" />
     <Compile Include="Mutable\ITypeData.cs" />
-    <Compile Include="Mutable\Statements\IAssignment.cs" />
+    <Compile Include="Statements\Mutable\IAssignment.cs" />
     <Compile Include="Statements\IReadOnlyAssignment.cs" />
     <Compile Include="Statements\IConstant.cs" />
     <Compile Include="Statements\IDeclaration.cs" />

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using JabberCompiler.Model.Statements;
+using JabberCompiler.Model.Statements.Mutable;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,9 +10,9 @@ namespace JabberCompiler.Model.Mutable
 {
     public interface IExpression : IReadOnlyExpression
     {
-        Mutable.Statements.IAssignment SetAsAssignment(IReadOnlyVariable assignTo);
+        IAssignment SetAsAssignment(IReadOnlyVariable assignTo);
 
-        JabberCompiler.Model.Statements.IDeclaration SetAsDeclaration(string variableName, IReadOnlyType type, 
+        IDeclaration SetAsDeclaration(string variableName, IReadOnlyType type, 
             out IReadOnlyVariable variableCreated);
     }
 }

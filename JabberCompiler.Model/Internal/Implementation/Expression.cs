@@ -1,7 +1,7 @@
-﻿using JabberCompiler.Model.Internal.Implementation.Statements;
-using JabberCompiler.Model.Mutable;
-using JabberCompiler.Model.Mutable.Statements;
+﻿using JabberCompiler.Model.Mutable;
 using JabberCompiler.Model.Statements;
+using JabberCompiler.Model.Statements.Internal;
+using JabberCompiler.Model.Statements.Mutable;
 using System;
 using System.Collections.Generic;
 using System.Linq;

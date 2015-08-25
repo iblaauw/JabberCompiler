@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JabberCompiler.Model.Mutable.Statements
+namespace JabberCompiler.Model.Statements.Mutable
 {
     public interface IAssignment : IReadOnlyAssignment
     {
