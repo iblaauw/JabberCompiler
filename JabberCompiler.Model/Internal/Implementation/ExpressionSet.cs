@@ -1,5 +1,4 @@
-﻿using JabberCompiler.Model.Expressions;
-using JabberCompiler.Model.Mutable;
+﻿using JabberCompiler.Model.Mutable;
 using JabberCompiler.Model.Statements;
 using System;
 using System.Collections.Generic;
@@ -31,32 +30,12 @@ namespace JabberCompiler.Model.Internal.Implementation
 
         public IContextData AssociatedContextMutable { get; private set; }
 
-        public IReadOnlyExpression AddExpression(IStatementData statementHead)
+        public IExpression AddExpression()
         {
-            ValidateStatementToAdd(statementHead);
+            Expression expression = new Expression(AssociatedContextMutable);
+            expressions.Add(expression);
 
-            ExpressionData data = new ExpressionData(AssociatedContextMutable, statementHead);
-            expressions.Add(data);
-
-            return data;
-        }
-
-        private void ValidateStatementToAdd(IStatementData statementHead)
-        {
-            if (KindUtilities.IsNeverRoot(statementHead.Kind))
-            {
-                throw new InvalidOperationException("The statement cannot be used as a stand-alone expression.");
-            }
-
-            if (statementHead.ParentExpression != null)
-            {
-                throw new InvalidOperationException("The statement is already part of a different expression.");
-            }
-
-            if (statementHead.ParentStatement != null)
-            {
-                throw new InvalidOperationException("The statement is not the root of its tree.");
-            }
+            return expression;
         }
     }
 }

@@ -8,7 +8,7 @@ namespace JabberCompiler.Model
 {
     public interface IReadOnlyExpression
     {
-        Statements.IStatementData ComponentsHead { get; }
+        IReadOnlyStatement ComponentsHead { get; }
         IReadOnlyContext OwningContext { get; }
         IReadOnlyExpressionSet SubExpressions { get; }
     }

@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace JabberCompiler.Model.Statements
 {
-    public interface IVariableStatement : IStatementData
+    public interface IReadOnlyAssignment : IReadOnlyStatement
     {
-        IReadOnlyVariable Variable { get; }
+        IReadOnlyVariable AssignedTo { get; }
+        IReturningStatement AssignedValue { get; }
     }
 }

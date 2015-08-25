@@ -9,7 +9,7 @@ namespace JabberCompiler.Model.Mutable
 {
     public interface IExpressionSet : IReadOnlyExpressionSet
     {
-        IReadOnlyExpression AddExpression(IStatementData statementHead);
+        IExpression AddExpression();
         IContextData AssociatedContextMutable { get; }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JabberCompiler.Model.Statements
 {
-    public interface INewStatement : IStatementData
+    public interface INewStatement : IReturningStatement
     {
         IReadOnlyFunction Constructor { get; }
     }

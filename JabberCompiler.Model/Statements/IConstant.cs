@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace JabberCompiler.Model.Statements
 {
-    public interface IConstant : IStatementData
+    public interface IConstant : IReturningStatement
     {
-        IReadOnlyType Type { get; }
         string Value { get; }
     }
 }

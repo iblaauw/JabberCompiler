@@ -14,6 +14,7 @@ namespace JabberCompiler.Model.Internal.Implementation
 
         internal ContextData(IReadOnlyContext parentContext)
         {
+            this.parentContext = parentContext;
             variablesByName = new Dictionary<string, IReadOnlyVariable>();
         }
 

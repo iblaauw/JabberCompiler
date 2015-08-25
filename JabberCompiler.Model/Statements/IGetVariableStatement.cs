@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace JabberCompiler.Model.Statements
 {
-    public interface IFunctionCall : IReturningStatement
+    public interface IGetVariableStatement : IReturningStatement
     {
-        IReadOnlyFunction Function { get; }
-        IReadOnlyList<IReturningStatement> ArgumentStatements { get; }
+        IReadOnlyVariable Variable { get; }
     }
 }

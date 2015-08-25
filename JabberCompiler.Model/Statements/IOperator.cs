@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace JabberCompiler.Model.Statements
 {
-    public interface IOperator : IStatementData
+    public interface IOperator : IReturningStatement
     {
-        IReadOnlyType ReturnType { get; }
-        IStatementData LeftSide { get; }
-        IStatementData RightSide { get; }
+        //OperatorType
+        IReturningStatement LeftSide { get; }
+        IReturningStatement RightSide { get; }
     }
 }
