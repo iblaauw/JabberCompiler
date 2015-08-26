@@ -80,5 +80,10 @@ namespace JabberCompiler.Model.Internal.Implementation
         {
             get { return expressions; }
         }
+
+        public IExpressionSet ExpressionsMutable
+        {
+            get { return expressions; }
+        }
     }
 }

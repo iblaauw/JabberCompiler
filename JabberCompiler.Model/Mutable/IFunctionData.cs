@@ -11,5 +11,7 @@ namespace JabberCompiler.Model.Mutable
         IReadOnlyArgument CreateArgument(string name, IReadOnlyType type);
 
         IReadOnlyArgument CreateAlternateArgument(string name, IReadOnlyType type, Preposition alternateAccess);
+
+        IExpressionSet ExpressionsMutable { get; }
     }
 }
