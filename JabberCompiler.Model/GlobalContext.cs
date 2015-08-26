@@ -25,6 +25,12 @@ namespace JabberCompiler.Model
         {
             get { return instance; }
         }
+        
+        public static void Clear()
+        {
+            instance.variables.Clear();
+            instance.typeData.Clear();
+        }
 
         public IReadOnlyCollection<IReadOnlyVariable> Variables
         {

@@ -29,6 +29,15 @@ namespace JabberCompiler
             var constant = ReturningStatement.CreateConstant(TypeRegistration.Int, "5");
             assignment.SetValue(constant);
 
+            IReadOnlyVariable itVariable;
+            IExpression newExpression3 = funcData2.ExpressionsMutable.AddExpression();
+            newExpression3.SetAsDeclaration("itVariable", TypeRegistration.Int, out itVariable);
+
+            IExpression newExpression4 = funcData2.ExpressionsMutable.AddExpression();
+            IAssignment assignment2 = newExpression4.SetAsAssignment(itVariable);
+            IGetVariableStatement getDoVar = ReturningStatement.CreateVariable(doVariable);
+            assignment2.SetValue(getDoVar);
+
             Task task = JabberCompiler.Printer.Printer.PrintType(followerType);
             task.Wait();
         }
