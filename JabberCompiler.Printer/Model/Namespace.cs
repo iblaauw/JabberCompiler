@@ -9,6 +9,6 @@ namespace JabberCompiler.Printer.Model
     public class Namespace
     {
         public string Name { get; set; }
-        public Class InnerClass { get; set; }
+        public JabberCompiler.Model.IReadOnlyType InnerClass { get; set; }
     }
 }

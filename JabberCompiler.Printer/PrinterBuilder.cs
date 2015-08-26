@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using JabberCompiler.Printer.Model;
 using System.Diagnostics;
+using JabberCompiler.Model;
 
 namespace JabberCompiler.Printer
 {
@@ -25,35 +26,62 @@ namespace JabberCompiler.Printer
             return builder.ToString();
         }
 
-        private void PrintClass(Class classToPrint)
+        private void PrintClass(IReadOnlyType type)
         {
-            string isStatic = classToPrint.IsStatic ? "static " : String.Empty;
-            AppendFormatLine("public {0}class {1}", isStatic, classToPrint.Name);
+            //TODO: make a static class and an internal class
+            AppendFormatLine("public class {0}", type.Name);
             AppendLine("{");
 
             indentLevel++;
-            foreach (Function func in classToPrint.Functions)
+            foreach (IReadOnlyFunction function in type.MemberFunctions)
             {
-                PrintFunction(func);
+                PrintFunction(function);
+            }
+            indentLevel--;
+        }
+
+        private void PrintFunction(IReadOnlyFunction function)
+        {
+            var argsAsStrings = function.AllArguments.Select(PrintArgument);
+            string arguments = String.Join(", ", argsAsStrings);
+
+            AppendFormatLine("public {0} {1}({4})", function.ReturnType.Name, function.Name, arguments);
+            AppendLine("{");
+
+            indentLevel++;
+            foreach (IReadOnlyExpression expression in function.Expressions.Expressions)
+            {
+                PrintExpression(expression);
             }
             indentLevel--;
 
             AppendLine("}");
         }
 
-        private void PrintFunction(Function function)
+        private string PrintArgument(IReadOnlyArgument argument)
         {
-            string arguments = String.Join(", ", function.Arguments);
-            string scope = function.IsPublic ? "public" : "private";
-            string isStatic = function.IsStatic ? "static " : String.Empty;
-            AppendFormatLine("{0} {1}{2} {3}({4})", scope, isStatic, function.ReturnType, function.Name, arguments);
-            AppendLine("{");
+            return argument.Type.Name + " " + argument.Name;
+        }
 
-            indentLevel++;
-            AppendLine(function.Contents);
-            indentLevel--;
-            
-            AppendLine("}");
+        private void PrintExpression(IReadOnlyExpression expression)
+        {
+            StatementPrinter sprinter = new StatementPrinter(expression.ComponentsHead);
+            string result = sprinter.Print();
+            AppendLine(result);
+
+            if (expression.SubExpressions != null)
+            {
+                AppendLine("{");
+
+                indentLevel++;
+                foreach (IReadOnlyExpression exp in expression.SubExpressions.Expressions)
+                {
+                    PrintExpression(exp);
+                }
+                indentLevel--;
+
+                AppendLine("}");
+            }
         }
 
         private void PrintNamespace(Namespace nspace)

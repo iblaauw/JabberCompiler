@@ -79,6 +79,7 @@
     <Compile Include="Internal\Implementation\TypeData.cs" />
     <Compile Include="Statements\KindUtilities.cs" />
     <Compile Include="Statements\ReturningStatement.cs" />
+    <Compile Include="Statements\StatementExtensions.cs" />
     <Compile Include="Statements\StatementKind.cs" />
     <Compile Include="TypeRegistration.cs" />
     <Compile Include="Internal\Implementation\VariableData.cs" />

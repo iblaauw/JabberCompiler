@@ -55,8 +55,7 @@
     <Compile Include="Printer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SnippetBuilder.cs" />
-    <Compile Include="Statements\IStatement.cs" />
-    <Compile Include="Statements\VariableDeclareStatement.cs" />
+    <Compile Include="StatementPrinter.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\JabberCompiler.Model\JabberCompiler.Model.csproj">
