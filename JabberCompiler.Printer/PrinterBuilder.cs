@@ -38,6 +38,8 @@ namespace JabberCompiler.Printer
                 PrintFunction(function);
             }
             indentLevel--;
+
+            AppendLine("}");
         }
 
         private void PrintFunction(IReadOnlyFunction function)
@@ -45,7 +47,7 @@ namespace JabberCompiler.Printer
             var argsAsStrings = function.AllArguments.Select(PrintArgument);
             string arguments = String.Join(", ", argsAsStrings);
 
-            AppendFormatLine("public {0} {1}({4})", function.ReturnType.Name, function.Name, arguments);
+            AppendFormatLine("public {0} {1}({2})", function.ReturnType.Name, function.Name, arguments);
             AppendLine("{");
 
             indentLevel++;
@@ -56,6 +58,7 @@ namespace JabberCompiler.Printer
             indentLevel--;
 
             AppendLine("}");
+            AppendLine();
         }
 
         private string PrintArgument(IReadOnlyArgument argument)

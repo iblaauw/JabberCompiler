@@ -13,9 +13,12 @@ namespace JabberCompiler.Model
 
         private Dictionary<string, VariableData> variables;
 
+        private Dictionary<string, ITypeData> typeData;
+
         private GlobalContext()
         {
             variables = new Dictionary<string, VariableData>();
+            typeData = new Dictionary<string, ITypeData>();
         }
 
         public static GlobalContext Instance
@@ -47,6 +50,18 @@ namespace JabberCompiler.Model
             variables[name] = newVar;
 
             return newVar;
+        }
+
+        public ITypeData CreateType(string name)
+        {
+            Internal.Implementation.TypeData data = new Internal.Implementation.TypeData(name, this);
+            this.typeData[name] = data;
+            return data;
+        }
+
+        public ITypeData GetType(string name)
+        {
+            return this.typeData[name];
         }
     }
 }

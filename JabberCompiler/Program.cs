@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using JabberCompiler.Model;
+using JabberCompiler.Model.Mutable;
 
 namespace JabberCompiler
 {
@@ -11,11 +12,13 @@ namespace JabberCompiler
     {
         static void Main(string[] args)
         {
-            TypeData typeData = new TypeData("Follower");
-            FunctionData funcData = typeData.CreateFunction("Lead", TypeRegistration.Void);
+            ITypeData followerType = GlobalContext.Instance.CreateType("Follower");
+            IFunctionData funcData = followerType.CreateFunction("Lead", TypeRegistration.Void);
             funcData.CreateArgument("numbSteps", TypeRegistration.Int);
+            IFunctionData funcData2 = followerType.CreateFunction("Join", TypeRegistration.Bool);
+            funcData2.CreateArgument("toReplace", followerType);
 
-            Task task = JabberCompiler.Printer.Printer.PrintType(typeData);
+            Task task = JabberCompiler.Printer.Printer.PrintType(followerType);
             task.Wait();
         }
     }

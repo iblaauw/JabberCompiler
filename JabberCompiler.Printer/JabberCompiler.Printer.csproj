@@ -40,15 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Composer.cs" />
-    <Compile Include="Expressions\ConcatExpressionNode.cs" />
-    <Compile Include="Expressions\ExpressionLeaf.cs" />
-    <Compile Include="Expressions\ExpressionNode.cs" />
-    <Compile Include="Expressions\IExpressionNode.cs" />
-    <Compile Include="Expressions\SpacedExpressionNode.cs" />
-    <Compile Include="Model\Argument.cs" />
-    <Compile Include="Model\Class.cs" />
     <Compile Include="Model\FullFile.cs" />
-    <Compile Include="Model\Function.cs" />
     <Compile Include="Model\Namespace.cs" />
     <Compile Include="PrinterBuilder.cs" />
     <Compile Include="Model\UsingStatement.cs" />

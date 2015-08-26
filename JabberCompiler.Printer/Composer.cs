@@ -14,10 +14,10 @@ namespace JabberCompiler.Printer
 
         public static void PrintDefaultMain(string projectName)
         {
-            string mainContents = "//hello world";
+            /*string mainContents = "//hello world";
             List<Argument> mainArgs = new List<Argument>() { new Argument("args", "string[]") };
             Function func = new Function() { Name = "Main", ReturnType = "void", IsStatic = true, 
-                Contents = mainContents, Arguments = mainArgs, IsPublic = true };
+                Contents = mainContents, Arguments = mainArgs, IsPublic = true };*/
             //Class mainClass = new Class() { Name = "Program", IsStatic = true, Functions = new[] { func } };
             //Namespace nspace = new Namespace() { Name = "Jabber." + projectName, InnerClass = mainClass };
             //FullFile file = new FullFile() { Name = "JabberMain.cs", NamespaceContained = nspace, Usings = UsingStatement.DefaultUsings };
