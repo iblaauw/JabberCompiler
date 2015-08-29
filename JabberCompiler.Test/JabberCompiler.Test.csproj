@@ -61,6 +61,7 @@
     <Compile Include="ReturningStatementTests.cs" />
     <Compile Include="DeclarationTests.cs" />
     <Compile Include="ExpressionTests.cs" />
+    <Compile Include="ExpressionSetTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\JabberCompiler.Model\JabberCompiler.Model.csproj">
