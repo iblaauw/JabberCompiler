@@ -57,7 +57,10 @@
     <Compile Include="GlobalContextTests.cs" />
     <Compile Include="KnownTypesTests.cs" />
     <Compile Include="TestExtensions.cs" />
-    <Compile Include="StatementTests.cs" />
+    <Compile Include="AssignmentTests.cs" />
+    <Compile Include="ReturningStatementTests.cs" />
+    <Compile Include="DeclarationTests.cs" />
+    <Compile Include="ExpressionTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\JabberCompiler.Model\JabberCompiler.Model.csproj">
