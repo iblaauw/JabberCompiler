@@ -20,7 +20,7 @@ namespace JabberCompiler.Test
         [TestInitialize]
         public void Setup()
         {
-            type = TypeRegistration.Int;
+            type = KnownTypes.Int;
             expression = CreationUtilities.CreateExpression();
             declaration = expression.SetAsDeclaration(VarName, type, out createdVar);
         }

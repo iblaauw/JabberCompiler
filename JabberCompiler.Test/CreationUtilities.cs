@@ -10,7 +10,7 @@ namespace JabberCompiler.Test
 {
     internal static class CreationUtilities
     {
-        public static IContextData CreateContext()
+        public static GlobalContext CreateGlobal()
         {
             GlobalContext.Clear();
             return GlobalContext.Instance;
@@ -19,12 +19,17 @@ namespace JabberCompiler.Test
         public static ITypeData CreateType()
         {
             GlobalContext.Clear();
-            return GlobalContext.Instance.CreateType("MyType");
+            return GlobalContext.Instance.AddType("MyType");
+        }
+
+        public static IContextData CreateContext()
+        {
+            return CreateType().ClassContextMutable;
         }
 
         public static IFunctionData CreateFunction()
         {
-            return CreateFunction(TypeRegistration.Int);
+            return CreateFunction(KnownTypes.Int);
         }
 
         public static IFunctionData CreateFunction(IReadOnlyType returnType)

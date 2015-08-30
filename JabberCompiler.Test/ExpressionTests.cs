@@ -30,7 +30,7 @@ namespace JabberCompiler.Test
         [TestMethod]
         public void ExpressionSetAssignment()
         {
-            IReadOnlyVariable variable = GlobalContext.Instance.AddVariable("Hello", TypeRegistration.Int);
+            IReadOnlyVariable variable = GlobalContext.Instance.AddVariable("Hello", KnownTypes.Int);
 
             IAssignment assignment = expression.SetAsAssignment(variable);
 
@@ -43,7 +43,7 @@ namespace JabberCompiler.Test
         public void ExpressionSetDeclaration()
         {
             string name = "MyVariable";
-            IReadOnlyType type = TypeRegistration.Int;
+            IReadOnlyType type = KnownTypes.Int;
 
             IReadOnlyVariable variable;
             IDeclaration declaration = expression.SetAsDeclaration(name, type, out variable);
@@ -66,7 +66,7 @@ namespace JabberCompiler.Test
         public void ExpressionDeclarationContext()
         {
             string name = "MyVariable";
-            IReadOnlyType type = TypeRegistration.Int;
+            IReadOnlyType type = KnownTypes.Int;
 
             IReadOnlyVariable variable;
             IDeclaration declaration = expression.SetAsDeclaration(name, type, out variable);
@@ -87,7 +87,7 @@ namespace JabberCompiler.Test
         public void ExpressionDeclarationNull()
         {
             //string name = "MyVariable";
-            IReadOnlyType type = TypeRegistration.Int;
+            IReadOnlyType type = KnownTypes.Int;
 
             IReadOnlyVariable variable;
             expression.SetAsDeclaration(null, type, out variable);
@@ -109,7 +109,7 @@ namespace JabberCompiler.Test
         public void ExpressionDeclareVoid()
         {
             string name = "MyVariable";
-            IReadOnlyType type = TypeRegistration.Void;
+            IReadOnlyType type = KnownTypes.Void;
 
             IReadOnlyVariable variable;
             expression.SetAsDeclaration(name, type, out variable);

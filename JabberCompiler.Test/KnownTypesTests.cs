@@ -11,25 +11,25 @@ namespace JabberCompiler.Test
         [TestCategory("KnownTypes")]
         public void KnownTypesNotNull()
         {
-            Assert.IsNotNull(TypeRegistration.Int);
-            Assert.IsNotNull(TypeRegistration.Bool);
-            Assert.IsNotNull(TypeRegistration.Void);
+            Assert.IsNotNull(KnownTypes.Int);
+            Assert.IsNotNull(KnownTypes.Bool);
+            Assert.IsNotNull(KnownTypes.Void);
         }
 
         [TestMethod]
         [TestCategory("KnownTypes")]
         public void KnownTypesNames()
         {
-            Assert.AreEqual(TypeRegistration.Int.Name, "int");
-            Assert.AreEqual(TypeRegistration.Bool.Name, "bool");
-            Assert.AreEqual(TypeRegistration.Void.Name, "void");
+            Assert.AreEqual(KnownTypes.Int.Name, "int");
+            Assert.AreEqual(KnownTypes.Bool.Name, "bool");
+            Assert.AreEqual(KnownTypes.Void.Name, "void");
         }
 
         [TestMethod]
         [TestCategory("KnownTypes")]
         public void KnownTypesVoidEmpty()
         {
-            Assert.IsTrue(TypeRegistration.Void.MemberFunctions.IsNullOrEmpty());
+            Assert.IsTrue(KnownTypes.Void.MemberFunctions.IsNullOrEmpty());
         }
     }
 }

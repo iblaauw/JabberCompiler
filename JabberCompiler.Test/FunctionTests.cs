@@ -21,7 +21,7 @@ namespace JabberCompiler.Test
         public void FunctionAddArgument()
         {
             string name = "Hello";
-            IReadOnlyType type = TypeRegistration.Bool;
+            IReadOnlyType type = KnownTypes.Bool;
 
 
             IReadOnlyArgument arg = function.CreateArgument(name, type);
@@ -37,7 +37,7 @@ namespace JabberCompiler.Test
         public void FunctionAddVoidArgument()
         {
             string name = "Hello";
-            function.CreateArgument(name, TypeRegistration.Void);
+            function.CreateArgument(name, KnownTypes.Void);
         }
 
         [TestMethod]
@@ -46,9 +46,9 @@ namespace JabberCompiler.Test
         public void FunctionAddArgumentTwice()
         {
             string name = "Hello";
-            function.CreateArgument(name, TypeRegistration.Bool);
+            function.CreateArgument(name, KnownTypes.Bool);
 
-            function.CreateArgument(name, TypeRegistration.Int);
+            function.CreateArgument(name, KnownTypes.Int);
         }
     }
 }

@@ -81,7 +81,7 @@
     <Compile Include="Statements\ReturningStatement.cs" />
     <Compile Include="Statements\StatementExtensions.cs" />
     <Compile Include="Statements\StatementKind.cs" />
-    <Compile Include="TypeRegistration.cs" />
+    <Compile Include="KnownTypes.cs" />
     <Compile Include="Internal\Implementation\VariableData.cs" />
   </ItemGroup>
   <ItemGroup />

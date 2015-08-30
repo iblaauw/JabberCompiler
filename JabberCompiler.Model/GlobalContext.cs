@@ -1,4 +1,5 @@
-﻿using JabberCompiler.Model.Mutable;
+﻿using JabberCompiler.Model.Internal.Implementation;
+using JabberCompiler.Model.Mutable;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -58,14 +59,22 @@ namespace JabberCompiler.Model
             return newVar;
         }
 
-        public ITypeData CreateType(string name)
+        public ITypeData AddType(string name)
         {
-            Internal.Implementation.TypeData data = new Internal.Implementation.TypeData(name, this);
+            if (ContainsType(name))
+                throw new InvalidOperationException("A type already exists with the given name.");
+
+            TypeData data = new TypeData(name, this);
             this.typeData[name] = data;
             return data;
         }
 
-        public ITypeData GetType(string name)
+        public bool ContainsType(string name)
+        {
+            return typeData.ContainsKey(name);
+        }
+
+        public IReadOnlyType GetTypeByName(string name)
         {
             return this.typeData[name];
         }

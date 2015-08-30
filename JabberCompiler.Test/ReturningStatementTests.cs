@@ -11,12 +11,12 @@ namespace JabberCompiler.Test
         [TestMethod]
         public void ReturningConstant()
         {
-            IConstant constant = ReturningStatement.CreateConstant(TypeRegistration.Int, "5");
+            IConstant constant = ReturningStatement.CreateConstant(KnownTypes.Int, "5");
 
             Assert.IsNotNull(constant);
             Assert.IsTrue(constant.Kind == StatementKind.Constant);
             Assert.IsTrue(constant.SubStatements.IsNullOrEmpty());
-            Assert.ReferenceEquals(constant.Type, TypeRegistration.Int);
+            Assert.ReferenceEquals(constant.Type, KnownTypes.Int);
             Assert.AreEqual(constant.Value, "5", false);
         }
 
@@ -24,13 +24,13 @@ namespace JabberCompiler.Test
         public void ReturningGetVariable()
         {
             var context = CreationUtilities.CreateContext();
-            IReadOnlyVariable variable = context.AddVariable("MyVariable", TypeRegistration.Int);
+            IReadOnlyVariable variable = context.AddVariable("MyVariable", KnownTypes.Int);
             IGetVariableStatement getVar = ReturningStatement.CreateVariable(variable);
 
             Assert.IsNotNull(getVar);
             Assert.IsTrue(getVar.Kind == StatementKind.Variable);
             Assert.IsTrue(getVar.SubStatements.IsNullOrEmpty());
-            Assert.ReferenceEquals(getVar.Type, TypeRegistration.Int);
+            Assert.ReferenceEquals(getVar.Type, KnownTypes.Int);
             Assert.ReferenceEquals(getVar.Variable, variable);
         }
 
@@ -45,7 +45,7 @@ namespace JabberCompiler.Test
         [ExpectedException(typeof(ArgumentNullException))]
         public void ReturningConstNull2()
         {
-            ReturningStatement.CreateConstant(TypeRegistration.Int, null);
+            ReturningStatement.CreateConstant(KnownTypes.Int, null);
         }
 
         [TestMethod]
@@ -59,7 +59,7 @@ namespace JabberCompiler.Test
         [ExpectedException(typeof(InvalidOperationException))]
         public void ReturningConstVoid()
         {
-            ReturningStatement.CreateConstant(TypeRegistration.Void, "bleh");
+            ReturningStatement.CreateConstant(KnownTypes.Void, "bleh");
         }
     }
 }

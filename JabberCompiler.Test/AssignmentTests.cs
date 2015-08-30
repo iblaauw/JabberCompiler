@@ -18,10 +18,10 @@ namespace JabberCompiler.Test
         public void Setup()
         {
             IExpression expression = CreationUtilities.CreateExpression();
-            variable1 = GlobalContext.Instance.AddVariable("MyVariable", TypeRegistration.Int);
+            variable1 = GlobalContext.Instance.AddVariable("MyVariable", KnownTypes.Int);
             assignment = expression.SetAsAssignment(variable1);
 
-            variable2 = GlobalContext.Instance.AddVariable("MyVariable2", TypeRegistration.Int);
+            variable2 = GlobalContext.Instance.AddVariable("MyVariable2", KnownTypes.Int);
         }
 
         [TestMethod]
@@ -34,7 +34,7 @@ namespace JabberCompiler.Test
         [TestMethod]
         public void AssignmentValue()
         {
-            IConstant constant = ReturningStatement.CreateConstant(TypeRegistration.Bool, "true");
+            IConstant constant = ReturningStatement.CreateConstant(KnownTypes.Bool, "true");
 
             assignment.SetValue(constant);
 
@@ -56,7 +56,7 @@ namespace JabberCompiler.Test
         [ExpectedException(typeof(InvalidOperationException))]
         public void AssignmentDoubleSet()
         {
-            IConstant constant = ReturningStatement.CreateConstant(TypeRegistration.Int, "5");
+            IConstant constant = ReturningStatement.CreateConstant(KnownTypes.Int, "5");
             IGetVariableStatement getVar = ReturningStatement.CreateVariable(variable2);
 
             assignment.SetValue(constant);

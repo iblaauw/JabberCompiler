@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JabberCompiler.Model
+namespace JabberCompiler.Model.Internal.Implementation
 {
     internal class VariableData : IReadOnlyVariable
     {

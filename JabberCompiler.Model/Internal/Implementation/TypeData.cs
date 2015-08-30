@@ -45,5 +45,7 @@ namespace JabberCompiler.Model.Internal.Implementation
 
         private ContextData context;
         public IReadOnlyContext ClassContext { get { return context; } }
+
+        public IContextData ClassContextMutable { get { return context; } }
     }
 }

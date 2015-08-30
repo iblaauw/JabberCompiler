@@ -20,24 +20,12 @@ namespace JabberCompiler.Test
             context = CreationUtilities.CreateContext();
         }
 
-        /*[TestMethod]
-        public void ContextAddType()
-        {
-            string name = "Test";
-
-            ITypeData type = context.CreateType(name);
-
-            Assert.IsNotNull(type);
-            Assert.AreEqual(type.Name, name);
-            Assert.ReferenceEquals(type.ClassContext, context);
-        }*/
-
         [TestMethod]
         [TestCategory("Context")]
         public void ContextAddVariable()
         {
             string varName = "MyVariable";
-            IReadOnlyType type = TypeRegistration.Int;
+            IReadOnlyType type = KnownTypes.Int;
 
             IReadOnlyVariable variable = context.AddVariable(varName, type);
 
@@ -53,7 +41,7 @@ namespace JabberCompiler.Test
         public void ContextAddVoidVar()
         {
             string varName = "MyVariable";
-            IReadOnlyType type = TypeRegistration.Void;
+            IReadOnlyType type = KnownTypes.Void;
 
             IReadOnlyVariable variable = context.AddVariable(varName, type);
         }
@@ -64,8 +52,8 @@ namespace JabberCompiler.Test
         public void ContextDoubleAddVar()
         {
             string varName = "MyVariable";
-            IReadOnlyType type = TypeRegistration.Bool;
-            IReadOnlyType type2 = TypeRegistration.Int;
+            IReadOnlyType type = KnownTypes.Bool;
+            IReadOnlyType type2 = KnownTypes.Int;
 
             context.AddVariable(varName, type);
             context.AddVariable(varName, type2);
@@ -76,12 +64,49 @@ namespace JabberCompiler.Test
         public void ContextAfterAddVar()
         {
             string varName = "MyVariable";
-            IReadOnlyType type = TypeRegistration.Int;
+            IReadOnlyType type = KnownTypes.Int;
 
             IReadOnlyVariable variable = context.AddVariable(varName, type);
 
-            Assert.IsFalse(context.Variables.IsNullOrEmpty());
             Assert.IsTrue(context.ContainsVariable(varName));
+        }
+
+        [TestMethod]
+        public void ContextAddType()
+        {
+            string name = "Test";
+
+            ITypeData type = context.AddType(name);
+
+            Assert.IsNotNull(type);
+            Assert.AreEqual(type.Name, name);
+            Assert.ReferenceEquals(type.ClassContext, context);
+
+            Assert.IsTrue(context.ContainsType(name));
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void ContextDoubleAddType()
+        {
+            string name = "Test";
+
+            context.AddType(name);
+            context.AddType(name);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void ContextAddNullType()
+        {
+            context.AddType(null);
+        }
+
+        [TestMethod]
+        public void ContextStartsEmpty()
+        {
+            Assert.IsFalse(context.ContainsVariable("Test"));
+            Assert.IsFalse(context.ContainsVariable("Test"));
         }
     }
 }

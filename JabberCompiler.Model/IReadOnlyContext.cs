@@ -8,10 +8,12 @@ namespace JabberCompiler.Model
 {
     public interface IReadOnlyContext
     {
-        IReadOnlyCollection<IReadOnlyVariable> Variables { get; }
-
         IReadOnlyVariable GetByName(string name);
 
         bool ContainsVariable(string name);
+
+        IReadOnlyType GetTypeByName(string name);
+
+        bool ContainsType(string name);
     }
 }

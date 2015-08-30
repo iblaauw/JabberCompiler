@@ -14,24 +14,24 @@ namespace JabberCompiler
     {
         static void Main(string[] args)
         {
-            ITypeData followerType = GlobalContext.Instance.CreateType("Follower");
-            IFunctionData funcData = followerType.CreateFunction("Lead", TypeRegistration.Void);
-            funcData.CreateArgument("numbSteps", TypeRegistration.Int);
-            IFunctionData funcData2 = followerType.CreateFunction("Join", TypeRegistration.Bool);
+            ITypeData followerType = GlobalContext.Instance.AddType("Follower");
+            IFunctionData funcData = followerType.CreateFunction("Lead", KnownTypes.Void);
+            funcData.CreateArgument("numbSteps", KnownTypes.Int);
+            IFunctionData funcData2 = followerType.CreateFunction("Join", KnownTypes.Bool);
             funcData2.CreateArgument("toReplace", followerType);
 
             IReadOnlyVariable doVariable;
             IExpression newExpression = funcData2.ExpressionsMutable.AddExpression();
-            newExpression.SetAsDeclaration("doVariable", TypeRegistration.Int, out doVariable);
+            newExpression.SetAsDeclaration("doVariable", KnownTypes.Int, out doVariable);
 
             IExpression newExpression2 = funcData2.ExpressionsMutable.AddExpression();
             IAssignment assignment = newExpression2.SetAsAssignment(doVariable);
-            var constant = ReturningStatement.CreateConstant(TypeRegistration.Int, "5");
+            var constant = ReturningStatement.CreateConstant(KnownTypes.Int, "5");
             assignment.SetValue(constant);
 
             IReadOnlyVariable itVariable;
             IExpression newExpression3 = funcData2.ExpressionsMutable.AddExpression();
-            newExpression3.SetAsDeclaration("itVariable", TypeRegistration.Int, out itVariable);
+            newExpression3.SetAsDeclaration("itVariable", KnownTypes.Int, out itVariable);
 
             IExpression newExpression4 = funcData2.ExpressionsMutable.AddExpression();
             IAssignment assignment2 = newExpression4.SetAsAssignment(itVariable);

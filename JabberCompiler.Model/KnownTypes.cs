@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace JabberCompiler.Model
 {
-    public static class TypeRegistration
+    public static class KnownTypes
     {
         private static Dictionary<string, IReadOnlyType> dataMapping;
         private static Predefined.VoidType predefVoid;
         private static Predefined.BooleanType predefBool;
         private static Predefined.IntegerType predefInt;
 
-        static TypeRegistration()
+        static KnownTypes()
         {
             dataMapping = new Dictionary<string, IReadOnlyType>();
             GeneratePredefs();
@@ -23,19 +23,9 @@ namespace JabberCompiler.Model
         public static IReadOnlyType Bool { get { return predefBool; } }
         public static IReadOnlyType Int { get { return predefInt; } }
 
-        public static IReadOnlyType GetNamedType(string typeName)
+        private static void RegisterType(IReadOnlyType type)
         {
-            return dataMapping[typeName];
-        }
-
-        internal static bool IsRegistered(string name)
-        {
-            return dataMapping.ContainsKey(name);
-        }
-
-        internal static void RegisterType(string name, IReadOnlyType type)
-        {
-            dataMapping[name] = type;
+            dataMapping[type.Name] = type;
         }
 
         private static void GeneratePredefs()
@@ -44,9 +34,9 @@ namespace JabberCompiler.Model
             predefBool = new Predefined.BooleanType();
             predefInt = new Predefined.IntegerType();
 
-            RegisterType(predefVoid.Name, predefVoid);
-            RegisterType(predefBool.Name, predefBool);
-            RegisterType(predefInt.Name, predefInt);
+            RegisterType(predefVoid);
+            RegisterType(predefBool);
+            RegisterType(predefInt);
         }
     }
 }

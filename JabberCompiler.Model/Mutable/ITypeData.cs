@@ -9,5 +9,7 @@ namespace JabberCompiler.Model.Mutable
     public interface ITypeData : IReadOnlyType
     {
         IFunctionData CreateFunction(string name, IReadOnlyType returnType);
+
+        IContextData ClassContextMutable { get; }
     }
 }
